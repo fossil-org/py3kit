@@ -5,60 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c05813ef-5550-41a6-a097-019d08dc775c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/gamelib.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/Bot1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/Button1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/include" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/__main__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/errors.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/board.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/bots/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/bots/autowalk.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/bots/follower.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/bots/simple.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/destruction.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/game.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/piston.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/player.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/shapes/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/shapes/block.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/shapes/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/shapes/diagonal_line.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/shapes/horizontal_line.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/shapes/tile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/shapes/triangle.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/shapes/vertical_line.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/random/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/random/integer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/random/location.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/render/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/render/checks.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/render/dimensions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/render/icon.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/render/mesh.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/render/mesh1d.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/render/mesh2d.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/render/mesh3d.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/render/mesh4d.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/render/render.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/render/states.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/render/states_tm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/script/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/script/handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/script/local.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/var/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/var/pointer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/var/var.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/py3kit/game/bots/avoid.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/py3kit/game/bots/reverse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/include" beforeDir="false" afterPath="$PROJECT_DIR$/src/include" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/py3kit/game/bots/follower.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/py3kit/game/bots/follower.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/py3kit/game/bots/simple.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/py3kit/game/bots/simple.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/py3kit/game/piston.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/py3kit/game/piston.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,17 +46,17 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/py3kit/game/bots" />
+      <recent name="$PROJECT_DIR$/src/py3kit/game/bots/avoid" />
       <recent name="$PROJECT_DIR$/src/py3kit" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/py3kit" />
-      <recent name="$PROJECT_DIR$/gamelib/renderkit" />
     </key>
   </component>
   <component name="SharedIndexes">

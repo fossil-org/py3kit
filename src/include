@@ -13,8 +13,7 @@ random/location
 script/handler
 var/var
 game/piston
-game/bots/simple
-game/bots/follower
+game/bots/avoid
 game/shapes/tile
 game/bots/autowalk
 errors

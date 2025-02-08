@@ -24,14 +24,33 @@ class Piston:
         elif self.game.tm.tag_exists(tag):
             location = self.game.tm.get_location_by_tag(tag)
             new_location = [x+y for x, y in zip(location, self._create_offset(action))]
-            if from_shape_push:
-                self.game.tm.protected.append(new_location)
-            self.game.tm.apply_offset(tag, *self._create_offset(action), icon=icon)
-            return new_location
+            if not self.validate_location(*new_location):
+                return location
+            passed: int = 0
+            total: int = len(self.game.board.shapes)
+            for _, shape in self.game.board.shapes:
+                result = shape.tick(self.game, updated_x, updated_y)
+                if result:
+                    passed += 1
+                    if callable(result):
+                        self.game.after.append([result, True])
+            if passed >= total:
+                if from_shape_push:
+                    self.game.tm.protected.append(new_location)
+                self.game.tm.apply_offset(tag, *self._create_offset(action), icon=icon)
+                return new_location
+            else:
+                return location
         else:
             from ..errors import TagNotFoundError
             raise TagNotFoundError("Cannot push a non-existent tag.")
-
+    def validate_location(self, *location):
+        return not any([
+            location[0] < 0,
+            location[0] >= self.game.board.mesh.dimensions.get(1),
+            location[1] < 0,
+            location[1] >= self.game.board.mesh.dimensions.get(2)
+        ])
     def _create_offset(self, action):
         return ({
             "q": -1, "w": 0, "e": 1,

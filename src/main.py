@@ -10,11 +10,11 @@ lsh = ScriptHandler(LocalScript)
 piston = Piston(game)
 
 def main():
-    bot = lsh.new("Bot1", FollowerBot)(Icon("#"), game, piston, (20, 20), "player")
+    bot = lsh.new("Bot1", AvoidBot)(Icon("#"), game, piston, (20, 20), "player")
     auto_walk = AutoWalk(bot)
     auto_walk.enable()
 
-button = lsh.new("Button1", Tile.generate_template(1), main=main)(Icon("@"), destruction=Destruction.DESTRUCTIBLE_HARD)
+button = lsh.new("Button1", Tile.generate_template(1), main=main)(Icon("@"), destruction=Destruction.PASSTHROUGH)
 
 game.board.place(button, 8, 8)
 

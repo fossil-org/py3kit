@@ -15,7 +15,7 @@ class SimpleBot:
 
     def walk(self):
         if not self.enabled or self.location == self.target:
-            return
+            ...
         right = self.target[0] > self.location[0]
         left = self.target[0] < self.location[0]
         up = self.target[1] > self.location[1]
@@ -38,6 +38,8 @@ class SimpleBot:
             action = "a"
         elif right:
             action = "d"
+        else:
+            return
 
         opposite = {
             "q": "c",
@@ -51,14 +53,22 @@ class SimpleBot:
             "c": "q"
         }[action]
 
-
-        self.location = self.piston.push(self.name, action, self.speed, False)
+        def do(push_direction):
+            def wrapper():
+                self.location = self.piston.push(self.name, push_direction, self.speed, False)
+            return wrapper
+        do_action = do(action)
+        do_opposite = do(opposite)
 
         if tuple(self.location) == self.target:
             loc = self.location
             self.game.tm.states.set(self.game.player.icon, *loc)
             self.enabled = False
             self.on_arrived()
+
+        self.decide_action(do_action, do_opposite)
+    def decide_action(self, do_action, do_opposite):
+        do_action()
 
     # CALLBACKS:
 

@@ -6,4 +6,4 @@ class FollowerBot(SimpleBot):
         super().__init__(icon, game, piston, location, game.tm.get_location_by_tag(target_tag), name, speed)
     def walk(self):
         self.target = self.game.tm.get_location_by_tag(self.target_tag)
-        super().walk()
+        return super().walk()
