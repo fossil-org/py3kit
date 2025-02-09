@@ -2,6 +2,7 @@ class Board:
     def __init__(self, mesh):
         self.mesh = mesh
         self.shapes: list = []
+        self.bots: list = []
         from ..render.checks import is_2d
         from ..errors import UnsupportedDimensionsError
         if not is_2d(self.mesh.dimensions):

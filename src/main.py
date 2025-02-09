@@ -3,20 +3,16 @@ from py3kit import include
 include.auto_globalize(globals())
 include.fetch()
 
-game = Game(Player(Icon("O"), (9, 10), 1), Board(Mesh2D(Dimensions(100, 30), StatesTagManager({"player": (5, 5)}, States({}, bg=".")))))
+game = Game(Player(Piston(), 1, Icon("O"), (1, 8)), Board(Mesh2D(Dimensions(100, 30), StatesTagManager({"player": (1, 8)}, States({}, bg=".")))))
 game.player.speed = 2
+game.clear = False
 
 lsh = ScriptHandler(LocalScript)
 piston = Piston(game)
 
-def main():
-    bot = lsh.new("Bot1", AvoidBot)(Icon("#"), game, piston, (20, 20), "player")
-    auto_walk = AutoWalk(bot)
-    auto_walk.enable()
+block = lsh.new("Block", Tile.generate_template(1))(Icon("X"), "BlockShape")
 
-button = lsh.new("Button1", Tile.generate_template(1), main=main)(Icon("@"), destruction=Destruction.PASSTHROUGH)
-
-game.board.place(button, 8, 8)
+game.board.place(block, 8, 8)
 
 while game.loop(output=lambda: (
     game.display_location(),
@@ -24,4 +20,4 @@ while game.loop(output=lambda: (
         game.new_line()
     ))
 )):
-    ...
+    piston.push("BlockShape[*]", "a")

@@ -12,6 +12,7 @@ class SimpleBot:
 
         self.game.tm.states.set(self.icon, *self.location)
         self.game.tm.add_tag(self.name, *self.location)
+        self.game.board.bots.append(self)
 
     def walk(self):
         if not self.enabled or self.location == self.target:
@@ -60,13 +61,15 @@ class SimpleBot:
         do_action = do(action)
         do_opposite = do(opposite)
 
+        self.ping()
+
+        self.decide_action(do_action, do_opposite)
+    def ping(self):
         if tuple(self.location) == self.target:
             loc = self.location
             self.game.tm.states.set(self.game.player.icon, *loc)
             self.enabled = False
             self.on_arrived()
-
-        self.decide_action(do_action, do_opposite)
     def decide_action(self, do_action, do_opposite):
         do_action()
 

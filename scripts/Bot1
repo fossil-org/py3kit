@@ -1,5 +1,0 @@
-def on_arrived(self):
-    print("hi")
-    import time
-
-    time.sleep(1)

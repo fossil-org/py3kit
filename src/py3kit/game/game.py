@@ -4,7 +4,8 @@ class Game:
     def __init__(
         self,
         player,
-        *boards
+        *boards,
+        **player_services
     ):
         self.boards = boards
         self.board = boards[0]
@@ -14,12 +15,20 @@ class Game:
         from ..render.icon import Icon
         from .player import Player
         self.player: Player = player
+        self.player.piston.game = self
         self.tm.states.set(Icon(self.player.icon), *self.player.location)
         self.out_of_bounds: bool = False
         self.last_action: str = ""
         self.after: list = []
         self.clear: bool = True
         self.output = None
+        player_services |= dict(
+            game = self
+        )
+        self.add_player_services(**player_services)
+    def add_player_services(self, **services):
+        for k, v in list(services.items()):
+            self.player.add_player_service(k, v)
     def loop(self, *, output=None):
         if self.clear: os.system("cls" if os.name == "nt" else "clear")
         if not self.output:
@@ -31,11 +40,12 @@ class Game:
                 result = a()
                 if result is False:
                     self.after[i][1] = False
+        for bot in self.board.bots:
+            bot.ping()
         self.board.show()
         self.board.render()
         if str(self.tm.states.get(*self.player.location)) != str(self.player.icon):
-            from ..errors import PlayerNotFoundError
-            raise PlayerNotFoundError(f"The player was not found on the board. This could be because of the player tile being forcibly overwritten by another tile/shape.")
+            self.player.on_death()
         try:
             query: str = input("* ").strip().lower()
         except (KeyboardInterrupt, EOFError):
@@ -47,35 +57,9 @@ class Game:
         set_oob: bool = False
         original_location: list = list(self.player.location)
         if query in tuple("qweasdzxc"):
-            for _ in range(self.player.speed):
-                if self.validate_location():
-                    original_location = list(self.player.location)
-                    updated_x = self.player.location[0] + {
-                        "q": -1, "w": 0, "e": 1,
-                        "a": -1, "s": 0, "d": 1,
-                        "z": -1, "x": 0, "c": 1
-                    }[query]
-                    updated_y = self.player.location[1] + {
-                        "q": 1,  "w": 1,  "e": 1,
-                        "a": 0,  "s": -1, "d": 0,
-                        "z": -1, "x": -1, "c": -1
-                    }[query]
-                    passed: int = 0
-                    total: int = len(self.board.shapes)
-                    for _, shape in self.board.shapes:
-                        result = shape.tick(self, updated_x, updated_y)
-                        if result:
-                            passed += 1
-                            if callable(result):
-                                self.after.append([result, True])
-                    if passed >= total:
-                        self.tm.states.set(self.tm.states.bg, *self.player.location)
-                        self.player.location[0] = updated_x
-                        self.player.location[1] = updated_y
-                        self.tm.states.set(self.player.icon, *self.player.location)
-                    else:
-                        set_oob = True
-                        break
+            self.player.move(query)
+            self.player.location[0] += self.player.piston.create_offset(query, self.player.speed)[0]
+            self.player.location[1] += self.player.piston.create_offset(query, self.player.speed)[1]
         elif query.startswith("eval::"):
             try:
                 game = self

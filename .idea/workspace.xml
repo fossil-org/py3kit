@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c05813ef-5550-41a6-a097-019d08dc775c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/bots/avoid.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/py3kit/game/bots/reverse.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/Block" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/Bot1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/Button1" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/include" beforeDir="false" afterPath="$PROJECT_DIR$/src/include" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/py3kit/game/bots/follower.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/py3kit/game/bots/follower.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/py3kit/game/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/py3kit/game/board.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/py3kit/game/bots/simple.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/py3kit/game/bots/simple.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/py3kit/game/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/py3kit/game/game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/py3kit/game/piston.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/py3kit/game/piston.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/py3kit/game/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/py3kit/game/player.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
