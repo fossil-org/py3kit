@@ -50,7 +50,7 @@ python3 -m py3kit path/to/my/game # this will run the game in path/to/my/game
 - `Piston` class from `game/piston` game parameter is now optional, but it has to be specified later for the piston to work.
 - `ReverseBot` from `game/bots/reverse` and `AvoidBot` from `game/bots/avoid` now have working `on_arrived` callbacks.
 - big rework to player movement, `game` no longer handles player movement and only provides the query to `game.piston`
-- the player is now a tile
+- the player is now a tile (NOT a `Tile` shape)
 - MANY bug fixes
 - added death (`game.player.on_death`)
 - - triggered when the player is not found on the board (for ex. overwritten/crushed by a tile or shape)
