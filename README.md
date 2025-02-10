@@ -39,7 +39,7 @@ python3 -m py3kit path/to/my/game # this will run the game in path/to/my/game
 - reworked how bots move (not noticeable while playing, but the new method is much more flexible in practice)
 - bug fixes
 
-## 8.3.2025
+## 9.2.2025
 - fixed some bugs with pistons
 - reworked parameters of the `Player` class from `game/player`
 - - old: `Player(icon, location, speed, states_tm)`
@@ -54,3 +54,4 @@ python3 -m py3kit path/to/my/game # this will run the game in path/to/my/game
 - MANY bug fixes
 - added death (`game.player.on_death`)
 - - triggered when the player is not found on the board (for ex. overwritten/crushed by a tile or shape)
+- player services can be provided to `game` (`Game(player, *boards, **player_services)`)
