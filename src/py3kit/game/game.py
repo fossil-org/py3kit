@@ -17,23 +17,23 @@ class Game:
         self.player: Player = player
         self.player.piston.game = self
         self.tm.states.set(Icon(self.player.icon), *self.player.location)
-        self.out_of_bounds: bool = False
         self.last_action: str = ""
         self.after: list = []
         self.clear: bool = True
-        self.output = None
+        self.output = ()
         player_services |= dict(
             game = self
         )
-        self.add_player_services(**player_services)
-    def add_player_services(self, **services):
+        self._add_player_services(**player_services)
+    def _add_player_services(self, **services):
         for k, v in list(services.items()):
-            self.player.add_player_service(k, v)
-    def loop(self, *, output=None):
+            self.player.add_local_service(k, v)
+    def loop(self, *output):
         if self.clear: os.system("cls" if os.name == "nt" else "clear")
         if not self.output:
-            self.output = output or (lambda: ...)
-        self.output()
+            self.output = output or (lambda: None,)
+        for o in self.output:
+            o()
         validate_wrapper_count: int = 0
         for i, (a, status) in enumerate(self.after):
             if status:
@@ -58,8 +58,6 @@ class Game:
         original_location: list = list(self.player.location)
         if query in tuple("qweasdzxc"):
             self.player.move(query)
-            self.player.location[0] += self.player.piston.create_offset(query, self.player.speed)[0]
-            self.player.location[1] += self.player.piston.create_offset(query, self.player.speed)[1]
         elif query.startswith("eval::"):
             try:
                 game = self
@@ -77,21 +75,21 @@ class Game:
             print(f"Clear screen set to {self.clear}")
 
         if self.validate_location():
-            self.out_of_bounds = set_oob
+            self.player.oob = set_oob
         else:
             self.tm.states.set(self.tm.states.bg, *self.player.location)
             self.player.location = original_location
             self.tm.states.set(self.player.icon, *self.player.location)
-            self.out_of_bounds = True
+            self.player.oob = True
 
         self.tm.add_tag("player", *self.player.location)
 
         return True
-    def add_output(self, addition):
+    def add_output(self, *addition):
         output = self.output
         self.output = lambda: (
-            output(),
-            addition()
+            *[o() for o in output],
+            *[a() for a in addition]
         )
     def get_player_location(self):
         return tuple(self.player.location)
@@ -106,7 +104,7 @@ class Game:
     def display_location(self, text: str | None = None):
         print((text or "x{x} y{y}").format(x=self.player.location[0], y=self.player.location[1]))
     def display_out_of_bounds(self, text: str | None = None, else_call = None):
-        if self.out_of_bounds:
+        if self.player.oob:
             print(text or "Cannot go there")
         elif else_call:
             else_call()

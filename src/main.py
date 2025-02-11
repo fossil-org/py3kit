@@ -3,21 +3,27 @@ from py3kit import include
 include.auto_globalize(globals())
 include.fetch()
 
-game = Game(Player(Piston(), 1, Icon("O"), (1, 8)), Board(Mesh2D(Dimensions(100, 30), StatesTagManager({"player": (1, 8)}, States({}, bg=".")))))
-game.player.speed = 2
-game.clear = False
-
 lsh = ScriptHandler(LocalScript)
-piston = Piston(game)
+states = States.auto_convert_to_icon({(5, 5): "O"}, bg=Icon("."))
+tm = StatesTagManager({"player": (5, 5)}, states=states)
+mesh = Mesh2D(Dimensions(100, 30), tm)
+board = Board(mesh)
+piston = Piston()
+player = Player(
+    piston=piston,
+    speed=2,
+    icon=None,
+    location=None,
+    states_tm=tm
+)
+game = Game(player, board)
 
-block = lsh.new("Block", Tile.generate_template(1))(Icon("X"), "BlockShape")
-
-game.board.place(block, 8, 8)
-
-while game.loop(output=lambda: (
-    game.display_location(),
-    game.display_out_of_bounds(else_call=lambda: (
-        game.new_line()
-    ))
-)):
-    piston.push("BlockShape[*]", "a")
+while game.loop(
+    game.display_location,
+    lambda: game.display_out_of_bounds(
+        else_call=(
+            game.display_last_move
+        )
+    )
+):
+    ...

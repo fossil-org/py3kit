@@ -31,6 +31,9 @@ class IncludeClass:
         result = []
 
         for item in content.split("\n"):
+            item = item.strip()
+            if not item:
+                continue
             result.append(self(item))
         return result
 

@@ -55,3 +55,11 @@ python3 -m py3kit path/to/my/game # this will run the game in path/to/my/game
 - added death (`game.player.on_death`)
 - - triggered when the player is not found on the board (for ex. overwritten/crushed by a tile or shape)
 - player services can be provided to `game` (`Game(player, *boards, **player_services)`)
+
+# 11.2.2025
+- finally, fixed a bug where moving the player an number of spaces that is less than the player's speed would bug out and create a copy.
+- QoL changes
+- `tm.apply_offset` removed
+- `tm.move_tag` added
+- changed `piston.push`
+- fixed distance in pistons
