@@ -43,8 +43,7 @@ python3 -m py3kit path/to/my/game # this will run the game in path/to/my/game
 - fixed some bugs with pistons
 - reworked parameters of the `Player` class from `game/player`
 - - old: `Player(icon, location, speed, states_tm)`
-- - new: `Player(piston, speed, icon, location, opo, states_tm)`
-- - the `opo` (`OnPlayerOverwrite`) parameter is optional, default: `OnPlayerOverwrite.ERROR`
+- - new: `Player(piston, speed, icon, location, states_tm)`
 - `Player` class from `game/player` location parameter is now optional (uses autofill, requires states_tm parameter)
 - `game.player` now has an attribute `game`, which points to the game the player is in.
 - `Piston` class from `game/piston` game parameter is now optional, but it has to be specified later for the piston to work.
